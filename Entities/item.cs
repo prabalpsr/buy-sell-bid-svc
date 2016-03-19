@@ -8,7 +8,7 @@ namespace BuySellBid
     {
         public long ItemId {get;set;}
         public String ItemName {get;set;}
-        public int ItemType {get;set;}
+        public ItemType ItemType {get;set;}
         public String ItemLocation {get;set;}
         public String SummaryDesc {get;set;}
         public String DetailedDesc {get;set;}
@@ -17,7 +17,7 @@ namespace BuySellBid
         public long PhotoId {get;set;}
         public DateTime ListingStartDate {get;set;}
         public DateTime ListingEndDate {get;set;}
-        public int ListingStatus {get;set;}    
+        public Status ListingStatus {get;set;}    
         public bool IsBiddable{get;set;}
         public double CurrentBidAmount{get;set;}
 

@@ -16,6 +16,8 @@ namespace BuySellBid
         public DbSet<Photo> Photos { get; set; }
         public DbSet<RoleType> RoleTypes { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<ItemType> ItemTypes { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

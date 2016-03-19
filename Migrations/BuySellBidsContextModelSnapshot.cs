@@ -32,19 +32,29 @@ namespace buysellbidsvc.Migrations
 
                     b.Property<double>("ItemPrice");
 
-                    b.Property<int>("ItemType");
+                    b.Property<int?>("ItemTypeItemTypeId");
 
                     b.Property<DateTime>("ListingEndDate");
 
                     b.Property<DateTime>("ListingStartDate");
 
-                    b.Property<int>("ListingStatus");
+                    b.Property<int?>("ListingStatusStatusId");
 
                     b.Property<long>("PhotoId");
 
                     b.Property<string>("SummaryDesc");
 
                     b.HasKey("ItemId");
+                });
+
+            modelBuilder.Entity("BuySellBid.ItemType", b =>
+                {
+                    b.Property<int>("ItemTypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ItemTypeDescription");
+
+                    b.HasKey("ItemTypeId");
                 });
 
             modelBuilder.Entity("BuySellBid.Person", b =>
@@ -78,7 +88,7 @@ namespace buysellbidsvc.Migrations
 
                     b.Property<DateTime>("ItemBuySellBidDateTime");
 
-                    b.Property<long?>("ItemIdItemId");
+                    b.Property<long>("ItemId");
 
                     b.Property<long>("PersonId");
 
@@ -125,6 +135,17 @@ namespace buysellbidsvc.Migrations
                     b.HasKey("StatusId");
                 });
 
+            modelBuilder.Entity("BuySellBid.Item", b =>
+                {
+                    b.HasOne("BuySellBid.ItemType")
+                        .WithMany()
+                        .HasForeignKey("ItemTypeItemTypeId");
+
+                    b.HasOne("BuySellBid.Status")
+                        .WithMany()
+                        .HasForeignKey("ListingStatusStatusId");
+                });
+
             modelBuilder.Entity("BuySellBid.Person", b =>
                 {
                     b.HasOne("BuySellBid.Status")
@@ -134,10 +155,6 @@ namespace buysellbidsvc.Migrations
 
             modelBuilder.Entity("BuySellBid.PersonItem", b =>
                 {
-                    b.HasOne("BuySellBid.Item")
-                        .WithMany()
-                        .HasForeignKey("ItemIdItemId");
-
                     b.HasOne("BuySellBid.Status")
                         .WithMany()
                         .HasForeignKey("PersonItemStatusStatusId");

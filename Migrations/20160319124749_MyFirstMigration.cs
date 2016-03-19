@@ -9,27 +9,16 @@ namespace buysellbidsvc.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Item",
+                name: "ItemType",
                 columns: table => new
                 {
-                    ItemId = table.Column<long>(nullable: false)
+                    ItemTypeId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CurrentBidAmount = table.Column<double>(nullable: false),
-                    DetailedDesc = table.Column<string>(nullable: true),
-                    IsBiddable = table.Column<bool>(nullable: false),
-                    ItemLocation = table.Column<string>(nullable: true),
-                    ItemName = table.Column<string>(nullable: true),
-                    ItemPrice = table.Column<double>(nullable: false),
-                    ItemType = table.Column<int>(nullable: false),
-                    ListingEndDate = table.Column<DateTime>(nullable: false),
-                    ListingStartDate = table.Column<DateTime>(nullable: false),
-                    ListingStatus = table.Column<int>(nullable: false),
-                    PhotoId = table.Column<long>(nullable: false),
-                    SummaryDesc = table.Column<string>(nullable: true)
+                    ItemTypeDescription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Item", x => x.ItemId);
+                    table.PrimaryKey("PK_ItemType", x => x.ItemTypeId);
                 });
             migrationBuilder.CreateTable(
                 name: "RoleType",
@@ -54,6 +43,41 @@ namespace buysellbidsvc.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Status", x => x.StatusId);
+                });
+            migrationBuilder.CreateTable(
+                name: "Item",
+                columns: table => new
+                {
+                    ItemId = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CurrentBidAmount = table.Column<double>(nullable: false),
+                    DetailedDesc = table.Column<string>(nullable: true),
+                    IsBiddable = table.Column<bool>(nullable: false),
+                    ItemLocation = table.Column<string>(nullable: true),
+                    ItemName = table.Column<string>(nullable: true),
+                    ItemPrice = table.Column<double>(nullable: false),
+                    ItemTypeItemTypeId = table.Column<int>(nullable: true),
+                    ListingEndDate = table.Column<DateTime>(nullable: false),
+                    ListingStartDate = table.Column<DateTime>(nullable: false),
+                    ListingStatusStatusId = table.Column<int>(nullable: true),
+                    PhotoId = table.Column<long>(nullable: false),
+                    SummaryDesc = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Item", x => x.ItemId);
+                    table.ForeignKey(
+                        name: "FK_Item_ItemType_ItemTypeItemTypeId",
+                        column: x => x.ItemTypeItemTypeId,
+                        principalTable: "ItemType",
+                        principalColumn: "ItemTypeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Item_Status_ListingStatusStatusId",
+                        column: x => x.ListingStatusStatusId,
+                        principalTable: "Status",
+                        principalColumn: "StatusId",
+                        onDelete: ReferentialAction.Restrict);
                 });
             migrationBuilder.CreateTable(
                 name: "Person",
@@ -87,7 +111,7 @@ namespace buysellbidsvc.Migrations
                     AmountRecievablePayable = table.Column<double>(nullable: false),
                     BidAmount = table.Column<double>(nullable: false),
                     ItemBuySellBidDateTime = table.Column<DateTime>(nullable: false),
-                    ItemIdItemId = table.Column<long>(nullable: true),
+                    ItemId = table.Column<long>(nullable: false),
                     PersonId = table.Column<long>(nullable: false),
                     PersonItemStatusStatusId = table.Column<int>(nullable: true),
                     RoleTypeRoleTypeId = table.Column<int>(nullable: true)
@@ -95,12 +119,6 @@ namespace buysellbidsvc.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PersonItem", x => x.PersonItemId);
-                    table.ForeignKey(
-                        name: "FK_PersonItem_Item_ItemIdItemId",
-                        column: x => x.ItemIdItemId,
-                        principalTable: "Item",
-                        principalColumn: "ItemId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PersonItem_Status_PersonItemStatusStatusId",
                         column: x => x.PersonItemStatusStatusId,
@@ -150,6 +168,7 @@ namespace buysellbidsvc.Migrations
             migrationBuilder.DropTable("Photo");
             migrationBuilder.DropTable("RoleType");
             migrationBuilder.DropTable("Item");
+            migrationBuilder.DropTable("ItemType");
             migrationBuilder.DropTable("Status");
         }
     }
