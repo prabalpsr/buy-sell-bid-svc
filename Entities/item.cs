@@ -1,20 +1,22 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity;
 
 namespace BuySellBid
 {
-    Class Item
+    class Item
     {
-        long ItemId {get;set;};
-        String ItemName {get;set;};
-        int ItemType {get;set;};
-        String ItemLocation {get;set;};
-        String SummaryDesc {get;set;};
-        String DetailedDesc {get;set;};
-        double ItemPrice {get;set;};
-        List<Photo> Photos {get;set;};
-        Photo DefaultPhoto{get;set;};
-        Date ListingStartDate {get;set;};
-        Date ListingEndDate {get;set;};
-        int ListingStatus {get;set;};    }
+        public long ItemId {get;set;}
+        public String ItemName {get;set;}
+        public int ItemType {get;set;}
+        public String ItemLocation {get;set;}
+        public String SummaryDesc {get;set;}
+        public String DetailedDesc {get;set;}
+        public double ItemPrice {get;set;}
+        public List<Photo> Photos {get;set;}
+        public Photo DefaultPhoto{get;set;}
+        public Date ListingStartDate {get;set;}
+        public Date ListingEndDate {get;set;}
+        public int ListingStatus {get;set;};    
+        }
 }

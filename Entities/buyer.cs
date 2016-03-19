@@ -1,15 +1,14 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity;
-using Person;
 
 namespace BuySellBid
 {
-    Class Buyer
+    class Buyer
     {
-        long BuyerId {get;set;}
-        Person Buyer{get;set;};
-        
-        List<> items;
-        
+        public long BuyerId {get;set;}
+        public Person Buyer{get;set;}
+        public List<ListItem> Items{get;set;}
+        public boolean BuyerStatus {get;set;}     
     }
 }
