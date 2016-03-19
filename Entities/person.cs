@@ -9,7 +9,7 @@ namespace BuySellBid
         public long PersonId {get;set;}
         public String Name {get;set;}
         public String UserId {get;set;}
-        public bool PersonStatus {get;set;}
+        public Status PersonStatus {get;set;}
         public String PhoneNo {get;set;}
         public String EmailId {get;set;}
         public String ChatId {get;set;}

@@ -8,9 +8,10 @@ using BuySellBid;
 namespace buysellbidsvc.Migrations
 {
     [DbContext(typeof(BuySellBidsContext))]
-    partial class BuySellBidsContextModelSnapshot : ModelSnapshot
+    [Migration("20160319115658_MyFirstMigration")]
+    partial class MyFirstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348");

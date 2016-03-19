@@ -9,6 +9,6 @@ namespace BuySellBid
         public long PhotoId{get;set;}
         public String PhotoURL{get;set;}
         public String PhotoName{get;set;}
-        public bool PhotoStatus{get;set;}
+        public Status PhotoStatus{get;set;}
      }
 }

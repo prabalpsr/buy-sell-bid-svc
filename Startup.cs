@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace buy_sell_bid_svc
+namespace BuySellBid
 {
     public class Startup
     {
