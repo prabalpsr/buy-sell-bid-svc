@@ -4,7 +4,7 @@ using Microsoft.Data.Entity;
 
 namespace BuySellBid
 {
-    class Item
+    public class Item
     {
         public long ItemId {get;set;}
         public String ItemName {get;set;}
@@ -15,8 +15,8 @@ namespace BuySellBid
         public double ItemPrice {get;set;}
         public List<Photo> Photos {get;set;}
         public Photo DefaultPhoto{get;set;}
-        public Date ListingStartDate {get;set;}
-        public Date ListingEndDate {get;set;}
-        public int ListingStatus {get;set;};    
+        public DateTime ListingStartDate {get;set;}
+        public DateTime ListingEndDate {get;set;}
+        public int ListingStatus {get;set;}    
         }
 }

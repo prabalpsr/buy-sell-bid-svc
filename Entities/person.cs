@@ -1,15 +1,17 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity;
 
 namespace BuySellBid
 {
-    Class Person
+    public class Person
     {
-        string Name {get;set;};
-        string UserId {get;set;};
-        bool Status {get;set;};
-        string PhoneNo {get;set;};
-        string EmailId {get;set;};
-        string ChatId {get;set;};
+        public long PersonId {get;set;}
+        public String Name {get;set;}
+        public String UserId {get;set;}
+        public bool PersonStatus {get;set;}
+        public String PhoneNo {get;set;}
+        public String EmailId {get;set;}
+        public String ChatId {get;set;}
     }
 }
