@@ -42,10 +42,34 @@ namespace BuySellBid
             }
             
             return PersonItemInContext;
-            //var Buyers = myDB.PersonItems.Where(t=> t.PersonItemIdId==id).Include(t=>t.BuyerEntity).Include(t=>t.Items);
-            //return Buyers.First();
+        }
+
+        // GET api/PersonItem/Person/5
+        [HttpGet("Person/{id}")]
+        public List<PersonItem> GetItemsForPerson(int id)
+        {
+            List<PersonItem> PersonItemInContext;
+            //Buyer temp = new Buyer();
+            using(BuySellBidsContext myDB = new BuySellBidsContext())
+            {
+                 PersonItemInContext = myDB.PersonItems.Where(t=> t.PersonId==id).ToList();
+            }
             
-            //return "value";
+            return PersonItemInContext;
+        }
+
+        // GET api/PersonItem/Item/5
+        [HttpGet("Item/{id}")]
+        public List<PersonItem> GetPersonsForItem(int id)
+        {
+            List<PersonItem> PersonItemInContext;
+            //Buyer temp = new Buyer();
+            using(BuySellBidsContext myDB = new BuySellBidsContext())
+            {
+                 PersonItemInContext = myDB.PersonItems.Where(t=> t.ItemId==id).ToList();
+            }
+            
+            return PersonItemInContext;
         }
 
         // POST api/PersonItem

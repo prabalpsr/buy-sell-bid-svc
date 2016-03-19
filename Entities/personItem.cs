@@ -10,7 +10,7 @@ namespace BuySellBid
         public long PersonItemId {get;set;}
         public long PersonId {get;set;}
         public RoleType RoleType {get;set;}
-        public Item ItemId{get;set;}
+        public long ItemId {get;set;}
         public Status PersonItemStatus {get;set;}  
         
         public DateTime ItemBuySellBidDateTime {get;set;}
